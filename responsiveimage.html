@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<style>
+*{
+box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+* .header {
+  text-align: center;
+  padding: 32px;
+} 
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+
+ .column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+} 
+
+ .column img {
+  margin-top: 8px;
+  vertical-align: middle;
+} 
+
+
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+} 
+
+
+ @media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+} 
+</style>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1><center>Responsive Image Gallery</center></h1>
+</div>
+
+<!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+    <img src="/c++.png" style="width:100%">
+    <img src="/html.png" style="width:100%">
+    <img src="/javascript.png" style="width:100%">
+  </div>
+
+  <div class="column">
+    <img src="/php.png" style="width:100%">
+    <img src="/python.png" style="width:100%">
+    <img src="/rsstudio.png" style="width:100%">
+  </div> 
+
+  <div class="column">
+    <img src="/ruby.jpg" style="width:100%">
+    <img src="/scala.png" style="width:100%">
+    <img src="/typescript.png" style="width:100%">
+  </div>
+
+  <div class="column">
+    <img src="/c#.jpg" style="width:100%">
+    <img src="/nodejs.png" style="width:100%">
+    <img src="/java.png" style="width:100%">
+  </div>
+</div>
+
+</body>
+</html>
