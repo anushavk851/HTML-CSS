@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Clone</title>
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+       *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:focus{
+    outline: none;
+}
+
+body{
+    position: relative;
+    background: white;
+    font-family: 'roboto', sans-serif;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 0 2.5vw;
+}
+
+.toggle-btn{
+    width: 20px;
+    height: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle-btn span{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #979797;
+}
+
+.toggle-btn span:nth-child(1){
+    top: 0;
+}
+
+.toggle-btn span:nth-child(3){
+    top: 100%;
+}
+.logoo{
+  height: 30px;
+  margin: -10px 30px 0;
+}
+
+.logo{
+    height: 30px;
+    margin: -10px 30px 0;
+    border-radius: 50%;
+}
+
+.search-box{
+    position: relative;
+    max-width: 500px;
+    width: 50%;
+    height: 35px;
+    display: flex;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.search-bar{
+    width: 85%;
+    height: 100%;
+    border: 2px solid #dbdbdb;
+    padding: 0 20px;
+    font-size: 16px;
+    text-transform: capitalize;
+    border-radius: 30px;
+    margin: auto;
+}
+
+.search-btn{
+    width: 12%;
+    height: 100%;
+    border: none;
+    padding: 5px 0;
+    border-left: none;
+    margin-left: -8.4rem;
+    background: #9e9e9e12;
+    border-radius: 30px;
+}
+
+.search-btn img{
+    height: 87%;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.user-options{
+    height: 35px;
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+
+.user-options .icon{
+    height: 80%;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.user-dp{
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-dp img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* side-bar */
+
+.side-bar{
+    position: fixed;
+    top: 60px;
+    left: 0;
+    min-width: 250px;
+    width: 250px;
+    height: calc(100vh - 60px);
+    background: white;
+    padding-right: 10px;
+}
+
+.links{
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    color: #979797;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.links img{
+    height: 25px;
+    margin-right: 20px;
+}
+
+.links:hover,
+.links.active{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.seperator{
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+
+
+.filters{
+    position: fixed;
+    left: 250px;
+    top: 60px;
+    width: calc(100% - 250px);
+    height: 60px;
+    background: #fff;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-top: 1rem;
+}
+
+.filters::-webkit-scrollbar{
+    display: none;
+}
+
+.filter-options{
+    flex: 0 0 auto;
+    padding: 7px 17px;
+    border-radius: 9px;
+    background: #f0f0f0f0;
+    border: none;
+    text-transform: capitalize;
+    margin-right: 10px;
+    color: #242424;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.filter-options.active{
+    color: #fff;
+    background: #242424;
+}
+
+
+
+.video-container{
+    width: calc(100% - 250px);
+    margin-top: 120px;
+    margin-left: 250px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-gap: 20px 5px;
+    overflow-x: hidden;
+}
+
+.video{
+    min-height: 250px;
+    height: auto;
+}
+
+.thumbnail{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.content{
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.channel-icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.title{
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    color: black;
+}
+
+.channel-name{
+    font-size: 14px;
+    margin: 2px 0;
+    color: #979797;
+} 
+.card{
+        border: none;
+    }
+    .card-img-top{
+        width: 270px;
+        height: 150px;
+        object-fit: cover;
+    }
+    .card-img-top{
+        transition: transform 0.3s ease ease-in-out;
+    }
+    .card-img-top:hover{
+        transform: scale(0.8);
+    }
+    </style>
+
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <img src="logoo.avif" class="logoo" alt="">
+        <div class="search-box">
+            <input type="text" class="search-bar" placeholder="search">
+            <button class="search-btn"><img src="search.jpg" alt=""></button>
+        </div>
+        
+            <div class="user-dp">
+                <img src="meeee.jpg" alt="">
+            </div>
+        </div>
+    </nav>
+
+    
+    <div class="side-bar">
+        <a href="#" class="links active"><img src="home.PNG" alt="">home</a>
+        <a href="#" class="links"><img src="explore.PNG" alt="">explore</a>
+        <a href="#" class="links"><img src="subscription.PNG" alt="">subscription</a>
+        <hr class="seperator">
+        <a href="#" class="links"><img src="library.PNG" alt="">library</a>
+        <a href="#" class="links"><img src="history.PNG" alt="">history</a>
+        <a href="#" class="links"><img src="your-video.PNG" alt="">your video</a>
+        <a href="#" class="links"><img src="watch-later.PNG" alt="">watch leater</a>
+        <a href="#" class="links"><img src="liked video.PNG" alt="">like video</a>
+        <a href="#" class="links"><img src="show more.PNG" alt="">show more</a>
+    </div>
+    
+      
+     <div class="filters">
+        <button class="filter-options active">all</button>
+        <button class="filter-options">Shorts</button>
+        <button class="filter-options">Vedios</button>
+        <button class="filter-options">Mixes</button>
+        <button class="filter-options">Playlist</button>
+        <button class="filter-options">HTML</button>
+        <button class="filter-options">Kdrama</button>
+        <button class="filter-options">Filmi</button>
+        <button class="filter-options">Popups</button>
+        <button class="filter-options">Trending</button>
+    </div>
+
+    
+    <div class="video-container">
+         <div class="video">
+            <img src="Ed_Sheeran_&_Justin_Bieber_-_I_Don't_Care.png" class="card-img-top" alt="Image">
+            <div class="content">
+                
+                <div class="info"><br>
+                  <img src="log2.png" class="logoo" alt="">
+                    <b>I Don't Care song</b>
+                    <h4 class="title">Justin Bieber and Ed Sheeran</h4>
+                    <p class="channel-name">2021</p>
+                </div>
+            </div>
+        </div>
+    
+        
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img src="thaniye.jpg" class="card-img-top" alt="Image 0">
+              <div class="card-body"><br>
+                <img src="log1.jpg" class="logo" alt="">
+                <b>Thaniye</b>
+                <br>
+                vishnu vijay,sooraj sandosh<br>
+                Released on 2016
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img src="o maahi.jpg" class="card-img-top" alt="Image 1">
+              <div class="card-body"><br>
+                <img src="musiclogo.jpg" class="logo" alt="">
+                <b>O Maahi</b>
+                <br>
+                Pritham,Arjith Singh<br>
+                2023
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img src="IMI IMI.jpg" class="card-img-top" alt="Image 2">
+              <div class="card-body"><br>
+                <img src="log2.png" class="logo" alt="">
+                <b>IMI IMI Song</b>
+                <br>
+                Teyno el reno<br>
+                2023
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card">
+              <img src="queen.jpg" class="card-img-top" alt="Image 3">
+              <div class="card-body"><br>
+                <img src="log2.png" class="logo" alt="">
+                <b>Vennilave</b>
+                <br>
+                Queen movie,ravi vijay<br>
+                2016
+              </div>
+            </div>
+          </div>
+          
+            <div class="col-md-3 mb-4">
+              <div class="card">
+                <img src="lutt putt.jpg" class="card-img-top" alt="Image 4">
+                <div class="card-body"><br>
+                  <img src="log2.png" class="logo" alt="">
+                  <b>Lutt Putt Gaya</b>
+                  <br>
+                  sharukh khan<br>
+                  2023 Release
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4">
+              <div class="card">
+                <img src="channa ve.jpg" class="card-img-top" alt="Image 5">
+                <div class="card-body"><br>
+                  <img src="musiclogo.jpg" class="logo" alt="">
+                  <b>Channa Ve</b>
+                  <br>
+                  Dhumika and rathod<br>
+                  2021
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4">
+              <div class="card">
+                <img src="dilse.jpg" class="card-img-top" alt="Image 6">
+                <div class="card-body"><br>
+                  <img src="log1.jpg" class="logo" alt="">
+                  <b>Dil Se Dil Tak</b>
+                  <br>
+                  Akashdeep and Pritham Singh<br>
+                  2024
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4">
+              <div class="card">
+                <img src="samja.jpg" class="card-img-top" alt="Image 7">
+                <div class="card-body"><br>
+                  <img src="musiclogo.jpg" class="logo" alt="">
+                  <b>Samjhavan</b>
+                  <br>
+                  Arjith Singh and Sreya Goshal<br>
+                  2008
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                  <img src="rideit.jpg" class="card-img-top" alt="Image 1" width="30%" height="10%">
+                  <div class="card-body"><br>
+                    <img src="log1.jpg" class="logo" alt="">
+                    <b>Ride It</b>
+                    <br>
+                    Ray Jay<br>
+                    Released on 2023
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <div class="card">
+                  <img src="maxresdefault.jpg" class="card-img-top" alt="Image 1" width="30%" height="10%">
+                  <div class="card-body"><br>
+                    <img src="log1.jpg" class="logo" alt="">
+                    <b>Chadrakalabham Song</b>
+                    <br>
+                    Old Hits,K.J Yesudas<br>
+                    Released on 1975
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <div class="card">
+                  <img src="ambalapuzha.jpg" class="card-img-top" alt="Image 1" width="30%" height="10%">
+                  <div class="card-body"><br>
+                    <img src="log1.jpg" class="logo" alt="">
+                    <b>Ambalapuzhe unni kannanodu Song</b>
+                    <br>
+                    Reprise by Kavya Ajith<br>
+                    Tunion Studio
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        </div>
+    
+
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="app.js"></script>
+    
+</body>
+</html>
