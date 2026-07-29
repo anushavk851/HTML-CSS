@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dropdown {
+            position:relative ;           
+        }
+        .dropdown-content{
+            display: none;
+            position:relative;
+            border-color: black;
+        }
+        .dropdown:hover .dropdown-content{
+            display: block;
+        }
+        .desc{
+            padding: 15px;
+            
+        }
+ </style>
+</head>
+<body>
+    <h2>Dropdown images</h2>
+    <p2>Move the mouse over the image below to open the dropdown content.</p2>
+
+    <div class="dropdown">
+        <img src="/apj-abdul-kalam.jpg" width="100" height="50">
+        <div class="dropdown-content">
+            <img src="apj-abdul-kalam.jpg" width="300" height="200">
+            <div class="desc">APJ Abdul Kalam</div>
+        </div>
+    </div>
+</body>
+</html>
